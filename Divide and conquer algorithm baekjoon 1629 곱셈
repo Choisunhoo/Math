@@ -1,0 +1,29 @@
+# baekjoon 1629 곱셈
+# 지수 법칙 = A^m+n = A^m x A^n
+#  나머지 분배 법칙 = (AxB)%C = (A%C) *(B%C) % C
+#  단순히 재곱을 곱한후 나누면 시간초과에 걸리기 때문에 곱셈의 개수를 줄이는 분할 정복을 사용
+
+import sys
+input = sys.stdin.readline
+
+a, b, c = map(int, input().split())
+
+def multiply (x, y):
+    # y가 1인 경우에는 곱할 필요가 없기 때문에 그냥 나머지 리턴
+    if y == 1:
+        return x%c
+    else: 
+        # multiply 함수를 통해서 x 를 (y//2)번 곱한 나머지를 구함
+        tmp = multiply(x, y//2)
+        # y가 짝수인 경우
+        if y % 2 == 0:
+            # tmp를 제곱 후 c로 나눈 나머지를 리턴
+            return tmp * tmp % c
+        # y가 홀수인 경우 
+        else:
+            # tmp를 제곱 후 x를 한번더 곱한 후에 c로 나눠야 x를 y번 곱한 후 c로 나눈 나머지가 구해짐
+            return tmp * tmp * x % c
+    
+
+result = multiply(a, b)
+print(result)
