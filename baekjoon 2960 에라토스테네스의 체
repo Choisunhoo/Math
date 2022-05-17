@@ -1,0 +1,22 @@
+# baekjoon 2960 에라토스테네스의 체
+
+n, k = map(int, input().split())
+
+data = [0] * (n+1)
+result = 0
+num = 0
+
+for i in range(2, n+1):
+    if result == k:
+        print(num)
+        break
+    if data[i] == 0:
+        cnt = 1
+        while True:
+            if cnt * i > n:
+                break 
+            if data[cnt * i] == 0:
+                data[cnt*i] = -1
+                result += 1
+                num = cnt * i
+            cnt += 1 
