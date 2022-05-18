@@ -1,0 +1,11 @@
+import math
+n = int(input())
+
+for i in range(n):
+    data = list(map(int, input().split()))
+    tnt = 0 
+    for j in range(1, len(data)):
+        for k in range(j+1, len(data)):
+            tnt += math.gcd(data[j], data[k])
+    
+    print(tnt)
