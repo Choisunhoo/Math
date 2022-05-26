@@ -1,0 +1,18 @@
+# baekjoon 10808 알파벳 개수 
+
+# 단어를 입력 및 리스트로 저장  
+word = list(input())
+
+# 알파벳의 개수 26개만큼 리스트를 만들고 초기화 
+data = [0] * 26
+
+# 단어에 있는 알파벳의 개수만큼 반복문 
+for i in range(len(word)):
+    # 아스키코드 숫자값으로 바꾼 값을 가장 기본인 a의 아스키 코드 값인 97로 빼줌 
+    alpha = ord(word[i]) - 97
+    # 이후 리스트에 있는 숫자를 추가 시켜줌
+    data[alpha] += 1
+
+# 반복문을 통해서 결과 출력 
+for i in data:
+    print(i, end=" ")
