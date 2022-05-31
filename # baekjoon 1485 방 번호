@@ -1,0 +1,25 @@
+# baekjoon 1485 방 번호 
+
+# 방 번호 입력
+numbers = input()
+# 방 번호를 저장할 리스트 생성
+data = [0] * 10 
+
+# 방 번호의 개수만큼 반복문 
+for i in range(len(numbers)):
+    # i번째 자리수를 번호로 바꿔줌 
+    num = int(numbers[i])
+    # 6이거나 9일때 조건문 생성
+    if num == 6 or num == 9:
+        # 리스트의 6번째가 9번째보다 작거나 같으면 6 추가
+        if data[6] <= data[9]:
+            data[6] += 1
+        # 그렇지 않으면 9 추가
+        else:
+            data[9] += 1
+    # 그 외의 경우에는 나머지 숫자 추가
+    else:
+        data[num] += 1
+
+# 리스트중 가장 큰값을 출력 
+print(max(data))
