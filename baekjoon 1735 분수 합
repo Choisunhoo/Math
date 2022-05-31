@@ -1,0 +1,21 @@
+# baekjoon 1735 분수 합
+
+# 최소 공배수를 구하는 함수 생성 
+def gcd(a, b):
+    while a % b != 0:
+        mod = a % b
+        a = b
+        b = mod 
+    return b
+
+# 2개의 분자와 분모를 입력 받음 
+a, b = map(int, input().split())
+c, d = map(int, input().split())
+
+
+g1 = gcd(b, d)
+demon = b * d // g1
+mole = a * (d//g1) + c * (b//g1)
+
+g2 = gcd(demon, mole)
+print(mole//g2, demon//g2)
